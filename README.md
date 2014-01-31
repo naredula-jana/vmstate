@@ -1,12 +1,17 @@
 vmstate to core files
 =======
-  Snapshot from qemu can be used to generate the  kernel core and application cores  and devices state in details.
- These core files can be open using the gdb to debug/troubleshoot kernel and applications of the vm.
+  Snapshot from qemu can be used for the following apart from live or offline migration:
+
+ - generate the  kernel core to debug the kernel state using gdb.
+ - application cores  to debug application using gdb
+ - devices state in details(example: virtio, cpu, memory state etc).
+
 
 #Completed:#
- -  kernel core for Jiny.
+ - generating kernel core for [Jiny OS](https://github.com/naredula-jana/Jiny-Kernel).
+ - partial device state
 
 #TODO:#
-  - currently kernel core is only for Jiny , need to parse page tables to capture for any kernel.
+  - currently kernel core is only for Jiny, need to parse page tables to capture for any kernel like freebsd,linux.
   - cores for the app(inside the Jiny).
-  - indetail device state capture.
+  - Indetail device state capture.
