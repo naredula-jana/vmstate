@@ -1,6 +1,6 @@
-Analyzing and Modifying Virtual machine State (vmstate)
+Analyzing and Modifying vmstate
 =======
-  Virtual machine state or vmstate is the state of software and hardware in the virtual machine, means state of pysical memory,cpu,NIC etc. Virtual machine Snapshot from hypervisor(qemu) is one form of vmstate, Snapshot not only  be used for Live migration, It can also be used by system programmers to analyze software and hardware running in the virtual machine. In this paper vmstate os explained.  
+  Virtual machine state or vmstate is the state of software and hardware in the virtual machine, means state of physical memory,cpu,NIC etc. Virtual machine Snapshot from hypervisor(qemu) is one form of vmstate, Snapshot not only  be used for Live migration, It can also be used by system programmers to analyze software and hardware running in the virtual machine. In this paper vmstate os explained.  
   
 
 **Flow :  steps to analysis and modify virtual machine from outside**:
