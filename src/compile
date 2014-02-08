@@ -1,0 +1,1 @@
+g++ -g ./generate_core.cc -I./  -o ../bin/generate_elf
