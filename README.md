@@ -10,7 +10,7 @@ The following is the flow of machine state conversion  from one format to anothe
  
   vm-->snapshot-->{Hs+Ss}-->{newHs+newSs}-->newSnapshot-->newVm
  
- -  Hs/newHs : old and new Hardware state ([example file](https://github.com/naredula-jana/vmstate/master/bin/file_devicestate.xml)). These files are created  by vmstate tool.
+ -  Hs/newHs : old and new Hardware state ([example file](https://github.com/naredula-jana/vmstate/blob/master/bin/file_devicestate.xml)). These files are created  by vmstate tool.
  -  Ss/newSs : software state in core dump file format interpreted by gdb, created by vmstate tool.
  -  snapshot/newSnapshot : Snapshot is a vm in a passive format. created/consumed by hypervisor. 
  -  vm/newVm : old and new VM will have almost the same state except the changes done by the user using vmstate tool.
