@@ -1,0 +1,432 @@
+<vmstate><version> version: 3 </version>
+<ram>
+  1:                               pc.ram: length: 40000000(     1024M) flags:4 
+  2:                             vga.vram: length:   800000(        8M) flags:4 
+  3:      0000:00:03.0/virtio-net-pci.rom: length:    40000(        0M) flags:4 
+  4:                              pc.bios: length:    20000(        0M) flags:4 
+  5:                               pc.rom: length:    20000(        0M) flags:4 
+  6:          0000:00:02.0/cirrus_vga.rom: length:    10000(        0M) flags:4 
+  7:            /rom@genroms/kvmvapic.bin: length:     3000(        0M) flags:4 
+  8:                 /rom@etc/acpi/tables: length:     2000(        0M) flags:4 
+  9:                /rom@etc/table-loader: length:     1000(        0M) flags:4 
+Ram Sizes Total mem :  408960ff  flags:4
+                                         highest addr :0
+                        ('pc.ram',) file offset:      125 :       0M address:        8
+                                         highest addr :3ffff028
+                      ('vga.vram',) file offset:  5c5085d :      92M address:        8
+                                         highest addr :7ff022
+('0000:00:03.0/virtio-net-pci.rom',) file offset:  5c6506d :      92M address:        8
+                                         highest addr :3f022
+                       ('pc.bios',) file offset:  5c8f298 :      92M address:        8
+                                         highest addr :1f028
+                        ('pc.rom',) file offset:  5caf39f :      92M address:        2
+                                         highest addr :1f022
+   ('0000:00:02.0/cirrus_vga.rom',) file offset:  5caf4db :      92M address:        8
+                                         highest addr :f022
+     ('/rom@genroms/kvmvapic.bin',) file offset:  5cb857c :      92M address:        8
+                                         highest addr :2028
+          ('/rom@etc/acpi/tables',) file offset:  5cba5aa :      92M address:        8
+                                         highest addr :1028
+         ('/rom@etc/table-loader',) file offset:  5cbc5d0 :      92M address:        8
+</ram>
+<device><inst_name>timer</inst_name><offset>97244651</offset>
+  <name>timer</name><version>2</version><in_vers>2<in_version><size>1(24)</size>
+  <element><name>cpu_ticks_offset</name><off>0</off><foff>5cbd5f3</foff><size>8*1</size><version>0</version><value>12be07a71c</value></element>
+  <element><name>dummy</name><off>24</off><size>8*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>cpu_clock_offset</name><off>8</off><foff>5cbd5fb</foff><size>8*1</size><version>2</version><value>0</value></element>
+</device>
+
+<device><inst_name>cpu_common</inst_name><offset>97244699</offset>
+  <name>cpu_common</name><version>1</version><in_vers>1<in_version><size>1(8)</size>
+  <element><name>halted</name><off>0</off><foff>5cbd61f</foff><size>4*1</size><version>0</version><value>1</value></element>
+  <element><name>interrupt_request</name><off>-48</off><foff>5cbd5ef</foff><size>4*1</size><version>0</version><value>12</value></element>
+</device>
+
+<device><inst_name>cpu</inst_name><offset>97244724</offset>
+  <name>cpu</name><version>12</version><in_vers>12<in_version><size>1817(1817)</size>
+  <element><name>env.regs</name><off>0</off><foff>5cbd63c</foff><size>8*16</size><version>0</version><value>246</value></element>
+     246
+     0
+     402069e0
+     10000
+     403c3fa0
+     403c3fb0
+     424
+     402069e0
+     10000
+     403c0000
+     403c0000
+     403c0000
+     0
+     0
+     0
+     0
+  <element><name>env.eip</name><off>128</off><foff>5cbd6bc</foff><size>8*1</size><version>0</version><value>4014d9a4</value></element>
+  <element><name>env.eflags</name><off>136</off><foff>5cbd6c4</foff><size>8*1</size><version>0</version><value>246</value></element>
+  <element><name>env.hflags</name><off>176</off><foff>5cbd6e8</foff><size>4*1</size><version>0</version><value>0</value></element>
+  <element><name>env.fpuc</name><off>474</off><foff>5cbd810</foff><size>2*1</size><version>0</version><value>0</value></element>
+  <element><name>env.fpus_vmstate</name><off>66888</off><size>2*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>env.fptag_vmstate</name><off>66890</off><size>2*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>env.fpregs_format_vmstate</name><off>66892</off><size>2*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>env.fpregs</name><off>496</off><foff>5cbd82c</foff><size>16*8</size><version>0</version><value>0</value></element>
+  <element><name>env.fpregs</name><off>496</off><foff>5cbd82c</foff><size>16*8</size><version>0</version><value>0</value></element>
+  <element><name>env.fpregs</name><off>496</off><foff>5cbd82c</foff><size>16*8</size><version>0</version><value>0</value></element>
+  <element><name>env.segs</name><off>184</off><foff>5cbd6f4</foff><size>24*6</size><version>0</version><value>0</value></element>
+  <element><name>env.ldt</name><off>328</off><foff>5cbd784</foff><size>24*1</size><version>0</version><value>ffffffff00c00000</value></element>
+  <element><name>env.tr</name><off>352</off><foff>5cbd79c</foff><size>24*1</size><version>0</version><value>c0000000000000</value></element>
+  <element><name>env.gdt</name><off>376</off><foff>5cbd7b4</foff><size>24*1</size><version>0</version><value>3000000000</value></element>
+  <element><name>env.idt</name><off>400</off><foff>5cbd7cc</foff><size>24*1</size><version>0</version><value>40208700</value></element>
+  <element><name>env.sysenter_cs</name><off>976</off><foff>5cbda08</foff><size>4*1</size><version>0</version><value>0</value></element>
+  <element><name>env.sysenter_esp</name><off>984</off><foff>5cbda14</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.sysenter_eip</name><off>992</off><foff>5cbda1c</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.sysenter_esp</name><off>984</off><foff>5cbda14</foff><size>8*1</size><version>7</version><value>0</value></element>
+  <element><name>env.sysenter_eip</name><off>992</off><foff>5cbda1c</foff><size>8*1</size><version>7</version><value>0</value></element>
+  <element><name>env.cr[0]</name><off>448</off><foff>5cbd7fc</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.cr[2]</name><off>464</off><foff>5cbd80c</foff><size>8*1</size><version>0</version><value>424580</value></element>
+  <element><name>env.cr[3]</name><off>472</off><foff>5cbd814</foff><size>8*1</size><version>0</version><value>101000</value></element>
+     101000
+  <element><name>env.cr[4]</name><off>480</off><foff>5cbd81c</foff><size>8*1</size><version>0</version><value>220</value></element>
+  <element><name>env.dr</name><off>1192</off><foff>5cbdae4</foff><size>8*8</size><version>0</version><value>ffffffffffffff</value></element>
+  <element><name>env.a20_mask</name><off>464</off><foff>5cbd808</foff><size>4*1</size><version>0</version><value>0</value></element>
+  <element><name>env.mxcsr</name><off>688</off><foff>5cbd8e8</foff><size>4*1</size><version>0</version><value>0</value></element>
+  <element><name>env.xmm_regs</name><off>696</off><foff>5cbd8f4</foff><size>16*16</size><version>0</version><value>0</value></element>
+  <element><name>env.efer</name><off>1000</off><foff>5cbda24</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.star</name><off>1008</off><foff>5cbda2c</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.lstar</name><off>1064</off><foff>5cbda64</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.cstar</name><off>1072</off><foff>5cbda6c</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.fmask</name><off>1080</off><foff>5cbda74</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.kernelgsbase</name><off>1088</off><foff>5cbda7c</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>env.smbase</name><off>1288</off><foff>5cbdb40</foff><size>4*1</size><version>4</version><value>0</value></element>
+  <element><name>env.pat</name><off>66152</off><size>8*1</size><version>5</version><status>SKIPING</status></element>
+  <element><name>env.hflags2</name><off>180</off><foff>5cbd6ec</foff><size>4*1</size><version>5</version><value>0</value></element>
+  <element><name>parent_obj.halted</name><off>-4</off><foff>5cbd634</foff><size>4*1</size><version>0</version><value>c</value></element>
+  <element><name>env.vm_hsave</name><off>1016</off><foff>5cbda34</foff><size>8*1</size><version>5</version><value>0</value></element>
+  <element><name>env.vm_vmcb</name><off>1024</off><foff>5cbda3c</foff><size>8*1</size><version>5</version><value>0</value></element>
+  <element><name>env.tsc_offset</name><off>1032</off><foff>5cbda44</foff><size>8*1</size><version>5</version><value>0</value></element>
+  <element><name>env.intercept</name><off>1040</off><foff>5cbda4c</foff><size>8*1</size><version>5</version><value>0</value></element>
+  <element><name>env.intercept_cr_read</name><off>1048</off><foff>5cbda4e</foff><size>2*1</size><version>5</version><value>0</value></element>
+  <element><name>env.intercept_cr_write</name><off>1050</off><foff>5cbda50</foff><size>2*1</size><version>5</version><value>0</value></element>
+  <element><name>env.intercept_dr_read</name><off>1052</off><foff>5cbda52</foff><size>2*1</size><version>5</version><value>0</value></element>
+  <element><name>env.intercept_dr_write</name><off>1054</off><foff>5cbda54</foff><size>2*1</size><version>5</version><value>0</value></element>
+  <element><name>env.intercept_exceptions</name><off>1056</off><foff>5cbda58</foff><size>4*1</size><version>5</version><value>0</value></element>
+  <element><name>env.v_tpr</name><off>1060</off><foff>5cbda58</foff><size>1*1</size><version>5</version><value>0</value></element>
+  <element><name>env.mtrr_fixed</name><off>66272</off><size>8*11</size><version>8</version><status>SKIPING</status></element>
+  <element><name>env.mtrr_deftype</name><off>66360</off><size>8*1</size><version>8</version><status>SKIPING</status></element>
+  <element><name>env.mtrr_var</name><off>66368</off><size>16*8</size><version>8</version><status>SKIPING</status></element>
+  <element><name>env.interrupt_injected</name><off>66504</off><size>4*1</size><version>9</version><status>SKIPING</status></element>
+  <element><name>env.mp_state</name><off>66496</off><size>4*1</size><version>9</version><status>SKIPING</status></element>
+  <element><name>env.tsc</name><off>1136</off><foff>5cbdaac</foff><size>8*1</size><version>9</version><value>0</value></element>
+  <element><name>env.exception_injected</name><off>66500</off><size>4*1</size><version>11</version><status>SKIPING</status></element>
+  <element><name>env.soft_interrupt</name><off>66508</off><size>1*1</size><version>11</version><status>SKIPING</status></element>
+  <element><name>env.nmi_injected</name><off>1296</off><foff>5cbdb44</foff><size>1*1</size><version>11</version><value>0</value></element>
+  <element><name>env.nmi_pending</name><off>1297</off><foff>5cbdb45</foff><size>1*1</size><version>11</version><value>0</value></element>
+  <element><name>env.has_error_code</name><off>66509</off><size>1*1</size><version>11</version><status>SKIPING</status></element>
+  <element><name>env.sipi_vector</name><off>66512</off><size>4*1</size><version>11</version><status>SKIPING</status></element>
+  <element><name>env.mcg_cap</name><off>66544</off><size>8*1</size><version>10</version><status>SKIPING</status></element>
+  <element><name>env.mcg_status</name><off>1160</off><foff>5cbdac4</foff><size>8*1</size><version>10</version><value>2d27443a3affffff</value></element>
+  <element><name>env.mcg_ctl</name><off>66552</off><size>8*1</size><version>10</version><status>SKIPING</status></element>
+  <element><name>env.mce_banks</name><off>66560</off><size>8*40</size><version>10</version><status>SKIPING</status></element>
+  <element><name>env.tsc_aux</name><off>66880</off><size>8*1</size><version>11</version><status>SKIPING</status></element>
+  <element><name>env.system_time_msr</name><off>1096</off><foff>5cbda84</foff><size>8*1</size><version>11</version><value>0</value></element>
+  <element><name>env.wall_clock_msr</name><off>1104</off><foff>5cbda8c</foff><size>8*1</size><version>11</version><value>0</value></element>
+  <element><name>env.xcr0</name><off>67160</off><size>8*1</size><version>12</version><status>SKIPING</status></element>
+  <element><name>env.xstate_bv</name><off>66896</off><size>8*1</size><version>12</version><status>SKIPING</status></element>
+  <element><name>env.ymmh_regs</name><off>66904</off><size>16*16</size><version>12</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>kvm-tpr-opt</inst_name><offset>97246566</offset>
+  <name>kvm-tpr-opt</name><version>1</version><in_vers>1<in_version><size>1(144)</size>
+  <element><name>rom_state</name><off>0</off><foff>5cbdd6e</foff><size>124*1</size><version>0</version><value>0</value></element>
+  <element><name>state</name><off>-20</off><foff>5cbdd56</foff><size>4*1</size><version>0</version><value>b6b766d</value></element>
+  <element><name>real_tpr_addr</name><off>-4</off><foff>5cbdd66</foff><size>4*1</size><version>0</version><value>1</value></element>
+  <element><name>rom_state_vaddr</name><off>-12</off><foff>5cbdd5e</foff><size>4*1</size><version>0</version><value>2d6f7074</value></element>
+  <element><name>vapic_paddr</name><off>-8</off><foff>5cbdd62</foff><size>4*1</size><version>0</version><value>0</value></element>
+  <element><name>rom_state_paddr</name><off>-16</off><foff>5cbdd5a</foff><size>4*1</size><version>0</version><value>2d747072</value></element>
+</device>
+
+<device><inst_name>apic</inst_name><offset>97246728</offset>
+  <name>apic</name><version>3</version><in_vers>3<in_version><size>1(181)</size>
+  <element><name>apicbase</name><off>0</off><foff>5cbde0c</foff><size>4*1</size><version>0</version><value>fee00900</value></element>
+  <element><name>id</name><off>4</off><foff>5cbde0c</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>arb_id</name><off>5</off><foff>5cbde0d</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>tpr</name><off>6</off><foff>5cbde0e</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>spurious_vec</name><off>8</off><foff>5cbde14</foff><size>4*1</size><version>0</version><value>3ff02</value></element>
+  <element><name>log_dest</name><off>12</off><foff>5cbde14</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>dest_mode</name><off>13</off><foff>5cbde15</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>isr</name><off>16</off><foff>5cbde1c</foff><size>4*8</size><version>0</version><value>0</value></element>
+  <element><name>tmr</name><off>48</off><foff>5cbde3c</foff><size>4*8</size><version>0</version><value>0</value></element>
+  <element><name>irr</name><off>80</off><foff>5cbde5c</foff><size>4*8</size><version>0</version><value>0</value></element>
+  <element><name>lvt</name><off>112</off><foff>5cbde7c</foff><size>4*6</size><version>0</version><value>f8000100</value></element>
+  <element><name>esr</name><off>136</off><foff>5cbde94</foff><size>4*1</size><version>0</version><value>885</value></element>
+  <element><name>icr</name><off>140</off><foff>5cbde98</foff><size>4*2</size><version>0</version><value>70030000</value></element>
+  <element><name>divide_conf</name><off>148</off><foff>5cbdea0</foff><size>4*1</size><version>0</version><value>3000000</value></element>
+  <element><name>count_shift</name><off>152</off><foff>5cbdea4</foff><size>4*1</size><version>0</version><value>40008c6</value></element>
+  <element><name>initial_count</name><off>156</off><foff>5cbdea8</foff><size>4*1</size><version>0</version><value>71000000</value></element>
+  <element><name>initial_count_load_time</name><off>160</off><foff>5cbdeb0</foff><size>8*1</size><version>0</version><value>7857c3584000000</value></element>
+  <element><name>next_time</name><off>168</off><foff>5cbdeb8</foff><size>8*1</size><version>0</version><value>786089ca4000000</value></element>
+  <element><name>timer_expiry</name><off>192</off><size>8*1</size><version>0</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>kvmclock</inst_name><offset>97246931</offset>
+  <name>kvmclock</name><version>1</version><in_vers>1<in_version><size>1(8)</size>
+  <element><name>clock</name><off>0</off><foff>5cbdedb</foff><size>8*1</size><version>0</version><value>785ac6ac8</value></element>
+</device>
+
+<device><inst_name>fw_cfg</inst_name><offset>97246959</offset>
+  <name>fw_cfg</name><version>2</version><in_vers>2<in_version><size>6(6)</size>
+  <element><name>cur_entry</name><off>0</off><foff>5cbdef1</foff><size>2*1</size><version>0</version><value>e</value></element>
+  <element><name>cur_offset</name><off>4</off><size>4*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>cur_offset</name><off>4</off><size>4*1</size><version>2</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>PCIBUS</inst_name><offset>97246985</offset>
+  <name>PCIBUS</name><version>1</version><in_vers>1<in_version><size>20(20)</size>
+  <element><name>nirq</name><off>0</off><foff>5cbdf0d</foff><size>4*1</size><version>0</version><value>4</value></element>
+  <element><name>irq_count</name><off>8</off><foff>5cbdf15</foff><size>4*1</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>0000:00:00.0/I440FX</inst_name><offset>97247038</offset>
+  <name>/I440FX</name><version>3</version><in_vers>3<in_version><size>277(277)</size>
+  <element><name>dev</name><off>0</off><size>1704*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>smm_enabled</name><off>11512</off><size>1*1</size><version>0</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>0000:00:01.0/PIIX3</inst_name><offset>97247347</offset>
+  <name>/PIIX3</name><version>3</version><in_vers>3<in_version><size>292(292)</size>
+  <element><name>dev</name><off>0</off><size>1704*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>pci_irq_levels_vmstate</name><off>1720</off><size>4*4</size><version>3</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>i8259</inst_name><offset>97247658</offset>
+  <name>i8259</name><version>1</version><in_vers>1<in_version><size>1(16)</size>
+  <element><name>last_irr</name><off>0</off><foff>5cbe1aa</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>irr</name><off>1</off><foff>5cbe1ab</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>imr</name><off>2</off><foff>5cbe1ac</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>isr</name><off>3</off><foff>5cbe1ad</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>priority_add</name><off>4</off><foff>5cbe1ae</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>irq_base</name><off>5</off><foff>5cbe1af</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>read_reg_select</name><off>6</off><foff>5cbe1b0</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>poll</name><off>7</off><foff>5cbe1b1</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>special_mask</name><off>8</off><foff>5cbe1b2</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>init_state</name><off>9</off><foff>5cbe1b3</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>auto_eoi</name><off>10</off><foff>5cbe1b4</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>rotate_on_auto_eoi</name><off>11</off><foff>5cbe1b5</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>special_fully_nested_mode</name><off>12</off><foff>5cbe1b6</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>init4</name><off>13</off><foff>5cbe1b7</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>single_mode</name><off>14</off><foff>5cbe1b8</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>elcr</name><off>15</off><foff>5cbe1b9</foff><size>1*1</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>i8259</inst_name><offset>97247693</offset>
+  <name>i8259</name><version>1</version><in_vers>1<in_version><size>1(16)</size>
+  <element><name>last_irr</name><off>0</off><foff>5cbe1cd</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>irr</name><off>1</off><foff>5cbe1ce</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>imr</name><off>2</off><foff>5cbe1cf</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>isr</name><off>3</off><foff>5cbe1d0</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>priority_add</name><off>4</off><foff>5cbe1d1</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>irq_base</name><off>5</off><foff>5cbe1d2</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>read_reg_select</name><off>6</off><foff>5cbe1d3</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>poll</name><off>7</off><foff>5cbe1d4</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>special_mask</name><off>8</off><foff>5cbe1d5</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>init_state</name><off>9</off><foff>5cbe1d6</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>auto_eoi</name><off>10</off><foff>5cbe1d7</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>rotate_on_auto_eoi</name><off>11</off><foff>5cbe1d8</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>special_fully_nested_mode</name><off>12</off><foff>5cbe1d9</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>init4</name><off>13</off><foff>5cbe1da</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>single_mode</name><off>14</off><foff>5cbe1db</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>elcr</name><off>15</off><foff>5cbe1dc</foff><size>1*1</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>ioapic</inst_name><offset>97247729</offset>
+  <name>ioapic</name><version>3</version><in_vers>3<in_version><size>1(206)</size>
+  <element><name>id</name><off>0</off><foff>5cbe1f1</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>ioregsel</name><off>1</off><foff>5cbe1f2</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>unused</name><off>-9176</off><foff>5cbbe21</foff><size>8*1</size><version>2</version><value>4144520c00001e00</value></element>
+  <element><name>irr</name><off>4</off><foff>5cbe1f9</foff><size>4*1</size><version>2</version><value>0</value></element>
+  <element><name>ioredtbl</name><off>8</off><foff>5cbe201</foff><size>8*24</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>0000:00:02.0/cirrus_vga</inst_name><offset>97247972</offset>
+  <name>/cirrus_vga</name><version>2</version><in_vers>2<in_version><size>1870(1870)</size>
+  <element><name>dev</name><off>0</off><foff>5cbe2ec</foff><size>1704*1</size><version>0</version><value>21310b800</value></element>
+  <element><name>cirrus_vga</name><off>1704</off><size>77488*1</size><version>0</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>hpet</inst_name><offset>97249860</offset>
+  <name>hpet</name><version>2</version><in_vers>2<in_version><size>151(151)</size>
+  <element><name>config</name><off>0</off><foff>5cbea4c</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>isr</name><off>8</off><foff>5cbea54</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>hpet_counter</name><off>16</off><foff>5cbea5c</foff><size>8*1</size><version>0</version><value>c08c6bc0</value></element>
+  <element><name>num_timers</name><off>-2064</off><foff>5cbe234</foff><size>1*1</size><version>2</version><value>0</value></element>
+  <element><name>timer</name><off>-2056</off><foff>5cbe244</foff><size>64*1</size><version>0</version><value>100000000000000</value></element>
+</device>
+
+<device><inst_name>mc146818rtc</inst_name><offset>97250036</offset>
+  <name>mc146818rtc</name><version>3</version><in_vers>3<in_version><size>1(245)</size>
+  <element><name>cmos_data</name><off>0</off><foff>5cbeafc</foff><size>128*1</size><version>0</version><value>5800130016000530</value></element>
+  <element><name>cmos_index</name><off>128</off><foff>5cbeb74</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>unused</name><off>-336</off><foff>5cbe9ac</foff><size>28*1</size><version>0</version><value>0</value></element>
+  <element><name>periodic_timer</name><off>184</off><foff>5cbebb4</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>next_periodic_time</name><off>192</off><foff>5cbebbc</foff><size>8*1</size><version>0</version><value>0</value></element>
+  <element><name>unused</name><off>-336</off><foff>5cbe9ac</foff><size>24*1</size><version>0</version><value>0</value></element>
+  <element><name>irq_coalesced</name><off>220</off><foff>5cbebd4</foff><size>4*1</size><version>2</version><value>80000000</value></element>
+  <element><name>period</name><off>224</off><foff>5cbebd8</foff><size>4*1</size><version>2</version><value>0</value></element>
+  <element><name>base_rtc</name><off>136</off><foff>5cbeb84</foff><size>8*1</size><version>3</version><value>0</value></element>
+  <element><name>last_update</name><off>144</off><foff>5cbeb8c</foff><size>8*1</size><version>3</version><value>0</value></element>
+  <element><name>offset</name><off>152</off><foff>5cbeb94</foff><size>8*1</size><version>3</version><value>ffffff</value></element>
+  <element><name>update_timer</name><off>200</off><foff>5cbebc4</foff><size>8*1</size><version>3</version><value>0</value></element>
+  <element><name>next_alarm_time</name><off>208</off><foff>5cbebcc</foff><size>8*1</size><version>3</version><value>52ea7a45134e2c</value></element>
+</device>
+
+<device><inst_name>i8254</inst_name><offset>97250300</offset>
+  <name>i8254</name><version>3</version><in_vers>3<in_version><size>108(108)</size>
+  <element><name>channels[0].irq_disabled</name><off>0</off><foff>5cbec00</foff><size>4*1</size><version>3</version><value>0</value></element>
+  <element><name>channels</name><off>-48</off><foff>5cbebd4</foff><size>56*3</size><version>2</version><value>a893015580000000</value></element>
+  <element><name>channels[0].next_transition_time</name><off>-24</off><foff>5cbebec</foff><size>8*1</size><version>0</version><value>1737afe380040000</value></element>
+</device>
+
+<device><inst_name>serial</inst_name><offset>97250428</offset>
+  <name>serial</name><version>3</version><in_vers>3<in_version><size>11(11)</size>
+  <element><name>state</name><off>0</off><size>328*1</size><version>0</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>ps2kbd</inst_name><offset>97250459</offset>
+  <name>ps2kbd</name><version>3</version><in_vers>3<in_version><size>284(284)</size>
+  <element><name>common</name><off>0</off><size>288*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>scan_enabled</name><off>288</off><size>4*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>translate</name><off>292</off><size>4*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>scancode_set</name><off>296</off><size>4*1</size><version>3</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>ps2mouse</inst_name><offset>97250765</offset>
+  <name>ps2mouse</name><version>2</version><in_vers>2<in_version><size>291(291)</size>
+  <element><name>common</name><off>0</off><foff>5cbedd5</foff><size>288*1</size><version>0</version><value>ffffffff00000000</value></element>
+  <element><name>mouse_status</name><off>288</off><foff>5cbeeed</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>mouse_resolution</name><off>289</off><foff>5cbeeee</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>mouse_sample_rate</name><off>290</off><foff>5cbeeef</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>mouse_wrap</name><off>291</off><size>1*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>mouse_type</name><off>292</off><size>1*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>mouse_detect_state</name><off>293</off><size>1*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>mouse_dx</name><off>296</off><size>4*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>mouse_dy</name><off>300</off><size>4*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>mouse_dz</name><off>304</off><size>4*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>mouse_buttons</name><off>308</off><size>1*1</size><version>0</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>pckbd</inst_name><offset>97251075</offset>
+  <name>pckbd</name><version>3</version><in_vers>3<in_version><size>4(4)</size>
+  <element><name>kbd</name><off>0</off><size>56*1</size><version>0</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>vmmouse</inst_name><offset>97251100</offset>
+  <name>vmmouse</name><version>0</version><in_vers>0<in_version><size>4105(4105)</size>
+  <element><name>queue_size</name><off>0</off><foff>5cbef20</foff><size>4*1</size><version>0</version><value>400</value></element>
+  <element><name>queue</name><off>-4096</off><foff>5cbdf20</foff><size>4*1024</size><version>0</version><value>40000</value></element>
+  <element><name>nb_queue</name><off>4</off><foff>5cbef22</foff><size>2*1</size><version>0</version><value>0</value></element>
+  <element><name>status</name><off>6</off><foff>5cbef24</foff><size>2*1</size><version>0</version><value>0</value></element>
+  <element><name>absolute</name><off>8</off><foff>5cbef24</foff><size>1*1</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>port92</inst_name><offset>97255225</offset>
+  <name>port92</name><version>1</version><in_vers>1<in_version><size>1(1)</size>
+  <element><name>outport</name><off>0</off><foff>5cbff39</foff><size>1*1</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>dma</inst_name><offset>97255243</offset>
+  <name>dma</name><version>1</version><in_vers>1<in_version><size>75(75)</size>
+  <element><name>command</name><off>0</off><foff>5cbff4b</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>mask</name><off>1</off><foff>5cbff4c</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>flip_flop</name><off>2</off><foff>5cbff4d</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>dshift</name><off>3</off><foff>5cbff52</foff><size>4*1</size><version>0</version><value>0</value></element>
+  <element><name>regs</name><off>7</off><foff>5cbff5a</foff><size>40*4</size><version>1</version><value>0</value></element>
+</device>
+
+<device><inst_name>dma</inst_name><offset>97255335</offset>
+  <name>dma</name><version>1</version><in_vers>1<in_version><size>75(75)</size>
+  <element><name>command</name><off>0</off><foff>5cbffa7</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>mask</name><off>1</off><foff>5cbffa8</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>flip_flop</name><off>2</off><foff>5cbffa9</foff><size>1*1</size><version>0</version><value>0</value></element>
+  <element><name>dshift</name><off>3</off><foff>5cbffae</foff><size>4*1</size><version>0</version><value>1</value></element>
+  <element><name>regs</name><off>7</off><foff>5cbffb6</foff><size>40*4</size><version>1</version><value>0</value></element>
+</device>
+
+<device><inst_name>fdc</inst_name><offset>97255427</offset>
+  <name>fdc</name><version>2</version><in_vers>2<in_version><size>593(593)</size>
+  <element><name>state</name><off>0</off><foff>5cc000b</foff><size>336*1</size><version>0</version><value>40c00c0000800000</value></element>
+</device>
+
+<device><inst_name>0000:00:01.1/ide</inst_name><offset>97256050</offset>
+  <name>/ide</name><version>3</version><in_vers>3<in_version><size>1966(1966)</size>
+  <element><name>dev</name><off>0</off><foff>5cc027a</foff><size>1704*1</size><version>0</version><value>286801070</value></element>
+  <element><name>bmdma</name><off>5832</off><size>504*2</size><version>0</version><status>SKIPING</status></element>
+  <element><name>bus</name><off>1704</off><size>2064*2</size><version>1</version><status>SKIPING</status></element>
+  <element><name>bus[0].ifs</name><off>1824</off><size>952*2</size><version>3</version><status>SKIPING</status></element>
+  <element><name>bus[1].ifs</name><off>3888</off><size>952*2</size><version>3</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>i2c_bus</inst_name><offset>97258037</offset>
+  <name>i2c_bus</name><version>1</version><in_vers>1<in_version><size>1(1)</size>
+  <element><name>saved_address</name><off>0</off><foff>5cc0a35</foff><size>1*1</size><version>0</version><value>0</value></element>
+</device>
+
+<device><inst_name>0000:00:01.3/piix4_pm</inst_name><offset>97258073</offset>
+  <name>/piix4_pm</name><version>3</version><in_vers>3<in_version><size>312(312)</size>
+  <element><name>dev</name><off>0</off><size>1704*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>ar.pm1.evt.sts</name><off>2808</off><size>2*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>ar.pm1.evt.en</name><off>2810</off><size>2*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>ar.pm1.cnt.cnt</name><off>3000</off><size>2*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>apm</name><off>3032</off><size>200*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>ar.tmr.timer</name><off>2408</off><size>8*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>ar.tmr.overflow_time</name><off>2592</off><size>8*1</size><version>0</version><status>SKIPING</status></element>
+  <element><name>ar.gpe</name><off>2608</off><size>24*1</size><version>2</version><status>SKIPING</status></element>
+  <element><name>pci0_status</name><off>3536</off><size>8*1</size><version>2</version><status>SKIPING</status></element>
+</device>
+
+<device><inst_name>0000:00:03.0/virtio-net</inst_name><offset>97258422</offset>
+<device>virtio</device>
+ <subdevice><name>virtio_dev_</name>
+    <element><name>status</name><value>7</value></element>
+    <element><name>isr</name><value>0</value></element>
+    <element><name>queue_sel</name><value>1</value></element>
+    <element><name>quest_features</name><value>0</value></element>
+    <element><name>config_len</name><value>8</value></element>
+ </subdevice>
+   <element><name>max queues</name><value>3</value></element>
+ <subdevice><name>virtio_ring_</name>
+    <element><name>vring_num</name><value>100</value></element>
+    <element><name>pa</name><value>3fbd4000</value></element>
+    <element><name>last_avil_idx</name><value>8</value></element>
+    <element><name>pci_vector</name><value>0</value></element>
+ </subdevice>
+ <subdevice><name>virtio_ring_</name>
+    <element><name>vring_num</name><value>100</value></element>
+    <element><name>pa</name><value>3fbd0000</value></element>
+    <element><name>last_avil_idx</name><value>0</value></element>
+    <element><name>pci_vector</name><value>ffff</value></element>
+ </subdevice>
+ <subdevice><name>virtio_ring_</name>
+    <element><name>vring_num</name><value>40</value></element>
+    <element><name>pa</name><value>0</value></element>
+    <element><name>last_avil_idx</name><value>0</value></element>
+    <element><name>pci_vector</name><value>ffff</value></element>
+ </subdevice>
+    <element><name>mac</name><value>0:30:48:db:5e:1</value></element>
+ <subdevice><name>virtio_net_</name>
+    <element><name>vqs_tx_waiting</name><value>1</value></element>
+    <element><name>mergeable_rx_bufs</name><value>0</value></element>
+    <element><name>status</name><value>1</value></element>
+    <element><name>promisc</name><value>1</value></element>
+    <element><name>allmulti</name><value>0</value></element>
+    <element><name>mac_table_in_use</name><value>0</value></element>
+ </subdevice>
+<device><inst_name>acpi_build</inst_name><offset>97259390</offset>
+<error> device not found in the database :acpi_build</error>
+None
+<error> file overrun or underrun: </error> 97259392
+</vmstate>
+ Output :
+['file_memmap', '../bin/jiny_snapshot', 'file_kernel_core', '']
+ offset : 409f7 value  102000->0:2730100000000000:0  offset:40a0f
+ offset : 3f9ef value  101000->2720100000000000:0:0  offset:3fa07
+ offset : 3f9ef value  101000->2720100000000000:0:0  offset:3fa07
+ offset : 419ff value  103000->a102000000000000:e301200000000000:e301400000000000  offset:41a17

@@ -69,19 +69,21 @@ def qemu_get_string(len):
     return mstr
 
 def read_elements(name,element_list):
+    print ' <subdevice><name>%s</name>'%(name)
     for element in element_list:
         if (element[1]==1):
             v=qemu_get_byte();
-            print "    %s%s -> %x"%(name,element[0],v)
+            print "    <element><name>%s</name><value>%x</value></element>"%(element[0],v)
         elif (element[1]==2):
             v=qemu_get_be16()
-            print "    %s%s -> %x"%(name,element[0],v)
+            print "    <element><name>%s</name><value>%x</value></element>"%(element[0],v)
         elif (element[1]==4):
             v=qemu_get_be32()
-            print "    %s%s -> %x"%(name,element[0],v) 
+            print "    <element><name>%s</name><value>%x</value></element>"%(element[0],v) 
         elif (element[1]==8):
             v=qemu_get_be64()
-            print "    %s%s -> %x"%(name,element[0],v)  
+            print "    <element><name>%s</name><value>%x</value></element>"%(element[0],v) 
+    print " </subdevice>" 
     return v
 
 virtio_dev = [['status',1],['isr',1],['queue_sel',2],['quest_features',4],['config_len',4]]
@@ -92,11 +94,11 @@ def read_virtio(max_to_read):
     """327 bytes pci load config , virtio_pci_load_config (d=0x555556f62920, f=0x5555570cd340)
      at hw/virtio/virtio-pci.c:144"""
     f.seek(device_database.VIRTIO_PCI_SIZE,1)
-    print "Virtio Device: "
+    print "<device>virtio</device>"
     len=read_elements("virtio_dev_",virtio_dev)
     config = qemu_get_string(len)
     max_queues = qemu_get_be32()
-    print "    virtio_net_max queues :",max_queues
+    print '   <element><name>max queues</name><value>%x</value></element>'%(max_queues)
     for x in xrange(1, max_queues+1): 
         len=read_elements("virtio_ring_",virtio_ring)
     mac0 = qemu_get_ubyte()
@@ -105,7 +107,7 @@ def read_virtio(max_to_read):
     mac3 = qemu_get_ubyte()
     mac4 = qemu_get_ubyte()
     mac5 = qemu_get_ubyte()
-    print '    virtio_net_mac :%x:%x:%x:%x:%x:%x'%(mac0,mac1,mac2,mac3,mac4,mac5)
+    print '    <element><name>mac</name><value>%x:%x:%x:%x:%x:%x</value></element>'%(mac0,mac1,mac2,mac3,mac4,mac5)
     len=read_elements("virtio_net_",virtio_net1)
     return  
 
@@ -166,9 +168,9 @@ def read_device(name,arg_version):
     global mem_file
     totalsize=0
     device=get_device(name);
-    print "device name :%s: offset:%d"%(name,f.tell())
+    print "<device><inst_name>%s</inst_name><offset>%d</offset>"%(name,f.tell())
     if (device ==0):
-        print " ERROR: device not found in the database :%s"%(name)
+        print "<error> device not found in the database :%s</error>"%(name)
         traceback.print_exc(file=sys.stdout)
 #       sys.exit(5)
         return;
@@ -194,12 +196,12 @@ def read_device(name,arg_version):
             if (hardcodedsize != 1):
                 dsize = hardcodedsize
             foffset_start = f.tell()
-            print "device name: %s version:%d  in_version:%d hardcoded:%d(%d)"%(fname,fversion,arg_version,hardcodedsize,dsize)
+            print "  <name>%s</name><version>%d</version><in_vers>%d<in_version><size>%d(%d)</size>"%(fname,fversion,arg_version,hardcodedsize,dsize)
         else:
             tsize = (fsize*fnum);
             val = 0x0
             if ((fsize+foffset) > (dsize)):
-                print "    :%s offset:%d size:%d*%d  version:%d SKIPING ... "%(fname,foffset,fsize,fnum,fversion)
+                print "  <element><name>%s</name><off>%d</off><size>%d*%d</size><version>%d</version><status>SKIPING</status></element>"%(fname,foffset,fsize,fnum,fversion)
             else:
                 f.seek(foffset_start+foffset)
                 if (fsize == 8):
@@ -210,7 +212,7 @@ def read_device(name,arg_version):
                     val = qemu_get_be16()
                 elif (fsize > 8):
                     val = qemu_get_be64()
-                print "    :%s offset:%d:%x FILEOFF:%x size:%d*%d  version:%d value=%x "%(fname,foffset,foffset,f.tell(),fsize,fnum,fversion,val)
+                print "  <element><name>%s</name><off>%d</off><foff>%x</foff><size>%d*%d</size><version>%d</version><value>%x</value></element>"%(fname,foffset,f.tell(),fsize,fnum,fversion,val)
                 f.seek(foffset_start+foffset)
                 if(fname == "env.regs" or fname == "env.cr[3]"):
                     values =1;
@@ -231,7 +233,7 @@ def read_device(name,arg_version):
         f.seek(foffset_start+dsize)
     #print "   total size : %d  filepos:%d"%(dsize,f.tell())
     read_subsection()
-    print "\n"
+    print "</device>\n"
     return
 
 phy_mem = []
@@ -326,7 +328,7 @@ def read(in_file, m_file):
     mem_file = m_file
     first_device=1
     x,version = struct.unpack('>4si', f.read(8))
-    print ' version: %x' %version
+    print '<vmstate><version> version: %x </version>\n<ram>' %version
     i=1
     try:
         while (i<90000): # 5+1+s+8=14+s   TODO; Here hardcoded to 9000 , need to make it generic
@@ -341,7 +343,9 @@ def read(in_file, m_file):
                     if (first_device == 1):
                         first_device = 0
                         mem_file.write(" 0 0 0 \n")
+                        print '</ram>'
                     read_device(idstr,version)
+                    
                 
             elif ((sec_type == 0x2) or (sec_type == 0x3)): #section part or section end
                 read_mem()
@@ -349,9 +353,11 @@ def read(in_file, m_file):
                 print " Completed endoffile:%d sofarread:%d "%(os.fstat(f.fileno()).st_size,f.tell())
                 return
             else:
-                print " ERROR sec_type:",sec_type
+                print "<error> ERROR sec_type:</error>",sec_type
+                print "</vmstate>"
                 sys.exit(2)
                 i=i+1
     except struct.error:
-        print "Error: file overrun or underrun: ",f.tell()
+        print "<error> file overrun or underrun: </error>",f.tell()
+        print "</vmstate>"
         return ;

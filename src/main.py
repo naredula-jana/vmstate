@@ -11,7 +11,6 @@
 *
 */
 """
-
 import vmstate,sys
 import getopt
 import subprocess
@@ -20,8 +19,6 @@ import argparse
 import os
 import tempfile
 import errno
-
-
 
 def main(options):
     global mem_file
@@ -56,7 +53,7 @@ if (__name__ == "__main__"):
     parser = argparse.ArgumentParser(prog='main')
     parser.add_argument("-s", "--qemu_snapshot", action="store", default="../bin/jiny_snapshot",
                         help="qemu snapshot file ")
-    parser.add_argument("-d", "--file_devicestate", action="store", default="file_devicestate",
+    parser.add_argument("-d", "--file_devicestate", action="store", default="file_devicestate.xml",
                         help="device state stored in this file")
     parser.add_argument("-m", "--file_phymemmap", action="store", default="file_memmap",
                         help="device state stored in this file")
