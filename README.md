@@ -1,7 +1,7 @@
 #Vmstate:#
     -Tool to Analyse and Modify virtual machine state
 
-  Virtual machine state  is the state of software and hardware in the virtual machine, means state of pysical memory,cpu,NIC and other devices etc. Virtual machine Snapshot from hypervisor(qemu) is one form of virtual machine(vm) state, Snapshot not only  be used for Live migration, It can also be used by system programmers to analyze software and hardware running in the virtual machine. In this paper vmstate tool will be explained, and how the tool can used to analyze and modify the state for trouble shooting the hardware and software of the virtual machine.  
+  Virtual machine state  is the state of software and hardware in the virtual machine, means state of physical memory,cpu,NIC and other devices etc. Virtual machine Snapshot from hypervisor(qemu) is one form of virtual machine(vm) state, Snapshot not only  be used for Live migration, It can also be used by system programmers to analyze software and hardware running in the virtual machine. In this paper vmstate tool will be explained, and how the tool can used to analyze and modify the state for trouble shooting the hardware and software of the virtual machine.  
   
 **Key difference between virtual and physical:** It is easy and reliable to capture the virtual machine state when compare to the physical machine.  The key difference is, in the vm the state is captured from outside, where as in the physical machine the state is captured from inside. due to this it will be difficult to capture the state, state like partial kernel core and application cores can be captured in the physical memory from inside. 
 
@@ -15,7 +15,7 @@ The following is the flow of machine state conversion  from one format to anothe
  -  snapshot/newSnapshot : Snapshot is a vm in a passive format. created/consumed by hypervisor. 
  -  vm/newVm : old and new VM will have almost the same state except the changes done by the user using vmstate tool.
 
-**Hypervisor(qemu+kvm)** : converts from active virtual machine(vm) to a passive snapshot format, and viceversa.
+**Hypervisor(qemu+kvm)** : converts from active virtual machine(vm) to a passive snapshot format, and vice versa.
 **vmstate tool**: It is used for the following  three purposes:
 1. Extract  hardware(Hs) + software(Ss) states of vm  from the snapshot.
 2. Modify/edit the  software/hardware states using gdb aswell as vmstate tool. 
