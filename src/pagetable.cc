@@ -42,7 +42,7 @@ void put_virtual_addr(int l4,int l3, int l2, int l1, unsigned long paddr, int ps
 #if 1
 	merge_program_section(paddr,vaddr,psize);
 #endif
-	printf("L4-L1; %x:%x:%x:%x vaddr:%x paddr:%x ",l4,l3,l2,l1,vaddr,paddr);
+	printf("L4-L1; %x:%x:%x:%x vaddr:%x paddr:%x \n",l4,l3,l2,l1,vaddr,paddr);
 	return;
 }
 

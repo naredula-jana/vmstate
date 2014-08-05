@@ -31,23 +31,24 @@ def main(options):
     except IOError:
         print "Error: can\'t find file to read data"
         return 1;
-    else:
-        print " Output :"
+
 
     mem_file.close()
+    print "<args>"
     args = [
             "%s"%(options.file_phymemmap),""
             "%s"%(options.qemu_snapshot),""
             "%s"%(options.file_kernelcore),""
             ]
-
     print args
+    print "</args>"
     subprocess.call(["./generate_elf"] + args  )
-    
+    print "<extra_output>"
     vmstate.read_phy_mem(0x102000)
     vmstate.read_phy_mem(0x101000)
     vmstate.read_phy_mem(0x101000)
     vmstate.read_phy_mem(0x103000)
+    print "</extra_output>"
 
 if (__name__ == "__main__"):
     parser = argparse.ArgumentParser(prog='main')

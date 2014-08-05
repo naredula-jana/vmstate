@@ -94,7 +94,7 @@ def read_virtio(max_to_read):
     """327 bytes pci load config , virtio_pci_load_config (d=0x555556f62920, f=0x5555570cd340)
      at hw/virtio/virtio-pci.c:144"""
     f.seek(device_database.VIRTIO_PCI_SIZE,1)
-    print "<device>virtio</device>"
+    print "<name>virtio</name>"
     len=read_elements("virtio_dev_",virtio_dev)
     config = qemu_get_string(len)
     max_queues = qemu_get_be32()
@@ -168,16 +168,18 @@ def read_device(name,arg_version):
     global mem_file
     totalsize=0
     device=get_device(name);
-    print "<device><inst_name>%s</inst_name><offset>%d</offset>"%(name,f.tell())
+    print "<device inst_name='%s'><offset>%d</offset>"%(name,f.tell())
     if (device ==0):
         print "<error> device not found in the database :%s</error>"%(name)
         traceback.print_exc(file=sys.stdout)
+        print "</device>\n"
 #       sys.exit(5)
         return;
     i=0;
 # TODO : check virtio not the exact name of device 
     if (name == '0000:00:03.0/virtio-net'):
         read_virtio_net(device)
+        print "</device>\n"
         return;
     
     for field in device:
@@ -196,7 +198,7 @@ def read_device(name,arg_version):
             if (hardcodedsize != 1):
                 dsize = hardcodedsize
             foffset_start = f.tell()
-            print "  <name>%s</name><version>%d</version><in_vers>%d<in_version><size>%d(%d)</size>"%(fname,fversion,arg_version,hardcodedsize,dsize)
+            print "  <name>%s</name><version>%d</version><in_version>%d</in_version><size>%d(%d)</size>"%(fname,fversion,arg_version,hardcodedsize,dsize)
         else:
             tsize = (fsize*fnum);
             val = 0x0
@@ -204,15 +206,19 @@ def read_device(name,arg_version):
                 print "  <element><name>%s</name><off>%d</off><size>%d*%d</size><version>%d</version><status>SKIPING</status></element>"%(fname,foffset,fsize,fnum,fversion)
             else:
                 f.seek(foffset_start+foffset)
-                if (fsize == 8):
-                    val = qemu_get_be64()
-                elif (fsize == 4):
-                    val = qemu_get_be32()
-                elif (fsize == 2):
-                    val = qemu_get_be16()
-                elif (fsize > 8):
-                    val = qemu_get_be64()
-                print "  <element><name>%s</name><off>%d</off><foff>%x</foff><size>%d*%d</size><version>%d</version><value>%x</value></element>"%(fname,foffset,f.tell(),fsize,fnum,fversion,val)
+                val = ""
+                for x in xrange(1, fnum+1):
+                    if (fsize == 1):
+                        val = "%s%x "%(val,qemu_get_byte())
+                    if (fsize == 8):
+                        val = "%s%x "%(val,qemu_get_be64()) 
+                    elif (fsize == 4):
+                        val = "%s%x "%(val,qemu_get_be32())
+                    elif (fsize == 2):
+                        val = "%s%x "%(val,qemu_get_be16())
+                    elif (fsize > 8):
+                        val = "%s%x "%(val,qemu_get_be64())
+                print "  <element><name>%s</name><value>%s</value><off>%d</off><foff>%x</foff><size>%d*%d</size><version>%d</version></element>"%(fname,val,foffset,f.tell(),fsize,fnum,fversion)
                 f.seek(foffset_start+foffset)
                 if(fname == "env.regs" or fname == "env.cr[3]"):
                     values =1;
@@ -226,7 +232,6 @@ def read_device(name,arg_version):
                     for x in xrange(1, values+1):
                         val = qemu_get_be64();
                         mem_file.write("%x "%(val))
-                        print "     %x"%(val)
                     mem_file.write("\n");
         i=i+1
     if (i>=0):
@@ -265,6 +270,7 @@ def read_mem():
     flags = 0x1
     while(flags != 0x10):
         addr = qemu_get_be64()
+#        print ' addr : %x'%(addr)
         flags = addr & 0xff
         if (flags & 0x4): # ram sizes  RAM_SAVE_FLAG_MEM_SIZE
             i=0
@@ -274,7 +280,7 @@ def read_mem():
                 idstr, length = struct.unpack(">" + str(len) + "sQ", f.read(len + 8))
                 i = i + 1
                 total_mem = total_mem + length
-                print '%3d:  %35s: length:%9x(%9dM) flags:%x '%(i, idstr, length,length/(1024*1024),flags)
+                print '%3d:  %35s: length:%9x(%9dM) flags:%x addr:%x'%(i, idstr, length,length/(1024*1024),flags,addr)
             print 'Ram Sizes Total mem :%10x  flags:%x' %(total_mem,flags)
         elif ((flags & 0x8) or (flags & 0x02)): # ram page RAM_SAVE_FLAG_PAGE or RAM_SAVE_FLAG_COMPRESS
             compress_byte=MEMORY_UNCOMPRESSED
@@ -293,8 +299,8 @@ def read_mem():
             else:
                 len = qemu_get_byte();
                 mstr = struct.unpack("<"+str(len)+"s", f.read(len))
-                print "%40s highest addr :%x"%("",highest_addr)
-                print "%35s file offset: %8x :%8dM address:%9x"%(mstr,f.tell(),f.tell()/(1024*1024),addr)
+#                print "%40s highest addr :%x"%("",highest_addr)
+                print "%35s file offset: %8x :%8dM address:%x highest addr:%x"%(mstr,f.tell(),f.tell()/(1024*1024),addr,highest_addr)
                 log("mem page addr :%x "%(addr));
                 highest_addr = 0x0
                 file_offset = f.tell()
